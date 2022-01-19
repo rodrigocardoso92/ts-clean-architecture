@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserPrimaryPort } from "../../../../domain/useCases/user/IUserUseCase";
+import { UserPrimaryPort } from "../../../../domain/entities/user/port";
 
 class UserController {
   constructor(private userService: UserPrimaryPort) {}

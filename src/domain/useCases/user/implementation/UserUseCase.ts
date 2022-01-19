@@ -1,6 +1,8 @@
-import { UserSecondaryDatabasePort } from "../../../entities/user/port";
+import {
+  UserPrimaryPort,
+  UserSecondaryDatabasePort,
+} from "../../../entities/user/port";
 import { User } from "../../../entities/user/user";
-import { UserPrimaryPort } from "../IUserUseCase";
 
 interface IRequest {
   username: string;
@@ -9,6 +11,7 @@ interface IRequest {
 
 class UserUseCase implements UserPrimaryPort {
   constructor(private userRepository: UserSecondaryDatabasePort) {}
+
   async createUser({ username, email }: IRequest): Promise<User> {
     const user = await this.userRepository.createUser({ username, email });
     return user;

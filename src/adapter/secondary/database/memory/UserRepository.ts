@@ -7,8 +7,17 @@ import { User } from "../../../../domain/entities/user/user";
 class UserRepository implements UserSecondaryDatabasePort {
   private usersStorage: User[];
 
-  constructor() {
+  private static INSTANCE: UserRepository;
+
+  private constructor() {
     this.usersStorage = [];
+  }
+
+  public static getInstance(): UserRepository {
+    if (!UserRepository.INSTANCE) {
+      UserRepository.INSTANCE = new UserRepository();
+    }
+    return UserRepository.INSTANCE;
   }
 
   async createUser({ email, username }: IUserDTO): Promise<User> {

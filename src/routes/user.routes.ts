@@ -5,7 +5,7 @@ import { UserUseCase } from "../domain/useCases/user/implementation/UserUseCase"
 
 const userRouter = Router();
 
-const userRepository = new UserRepository();
+const userRepository = UserRepository.getInstance();
 const userUseCase = new UserUseCase(userRepository);
 const userController = new UserController(userUseCase);
 
