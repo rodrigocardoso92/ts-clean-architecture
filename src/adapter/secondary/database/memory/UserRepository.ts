@@ -1,10 +1,10 @@
 import {
   IUserDTO,
-  UserSecondaryDatabasePort,
+  IUserSecondaryDatabasePort,
 } from "../../../../domain/entities/user/port";
 import { User } from "../../../../domain/entities/user/user";
 
-class UserRepository implements UserSecondaryDatabasePort {
+class UserRepository implements IUserSecondaryDatabasePort {
   private usersStorage: User[];
 
   private static INSTANCE: UserRepository;

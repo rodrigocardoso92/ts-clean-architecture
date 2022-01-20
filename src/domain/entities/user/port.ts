@@ -5,14 +5,14 @@ interface IUserDTO {
   username: string;
 }
 
-interface UserPrimaryPort {
+interface IUserPrimaryPort {
   list(): Promise<User[]>;
   createUser({ username, email }: IUserDTO): Promise<User>;
 }
 
-interface UserSecondaryDatabasePort {
+interface IUserSecondaryDatabasePort {
   list(): Promise<User[]>;
   createUser({ username, email }: IUserDTO): Promise<User>;
 }
 
-export { UserPrimaryPort, UserSecondaryDatabasePort, IUserDTO };
+export { IUserPrimaryPort, IUserSecondaryDatabasePort, IUserDTO };
