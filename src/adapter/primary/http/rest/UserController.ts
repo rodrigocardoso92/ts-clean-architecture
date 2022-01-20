@@ -18,6 +18,14 @@ class UserRestController {
     const user = await this.userService.findById(id);
     return response.status(200).json(user);
   }
+  async deleteUserById(
+    request: Request,
+    response: Response
+  ): Promise<Response> {
+    const { id } = request.params;
+    await this.userService.deleteById(id);
+    return response.status(204).send();
+  }
 }
 
 export { UserRestController };

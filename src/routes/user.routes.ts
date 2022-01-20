@@ -22,4 +22,8 @@ userRouter.get("/:id", (request, response) =>
   userRestController.findUserById(request, response)
 );
 
+userRouter.delete("/:id", (request, response) =>
+  userRestController.deleteUserById(request, response)
+);
+
 export { userRouter };

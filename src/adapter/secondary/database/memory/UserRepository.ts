@@ -42,6 +42,12 @@ class UserRepository implements IUserSecondaryDatabasePort {
     const user = await this.usersStorage.find((user) => user.id === id);
     return user;
   }
+
+  async deleteById(id: string): Promise<void> {
+    this.usersStorage = await this.usersStorage.filter(
+      (user) => user.id !== id
+    );
+  }
 }
 
 export { UserRepository };

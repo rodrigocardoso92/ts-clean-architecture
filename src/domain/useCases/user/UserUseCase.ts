@@ -34,6 +34,10 @@ class UserUseCase implements IUserPrimaryPort {
     const user = await this.userRepository.findById(id);
     return user;
   }
+
+  async deleteById(id: string): Promise<void> {
+    await this.userRepository.deleteById(id);
+  }
 }
 
 export { UserUseCase };
