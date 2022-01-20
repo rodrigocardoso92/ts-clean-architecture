@@ -21,11 +21,6 @@ class UserRepository implements IUserSecondaryDatabasePort {
   }
 
   async createUser({ email, username }: IUserDTO): Promise<User> {
-    const userAlreadyExists = await this.findByEmail(email);
-    if (userAlreadyExists) {
-      throw new Error("user already exists");
-    }
-
     const user = new User({ email, username });
 
     await this.usersStorage.push(user);

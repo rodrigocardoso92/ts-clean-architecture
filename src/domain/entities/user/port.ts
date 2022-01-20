@@ -13,7 +13,6 @@ interface IUserPrimaryPort {
 interface IUserSecondaryDatabasePort {
   list(): Promise<User[]>;
   createUser({ username, email }: IUserDTO): Promise<User>;
-  findByEmail(email: string): Promise<User>;
 }
 
 export { IUserPrimaryPort, IUserSecondaryDatabasePort, IUserDTO };
