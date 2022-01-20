@@ -14,7 +14,7 @@ class UserUseCase implements IUserPrimaryPort {
   constructor(private userRepository: IUserSecondaryDatabasePort) {}
 
   async createUser({ username, email }: IRequest): Promise<User> {
-    const userAlreadyExists = (await this.list()).find(
+    const userAlreadyExists = (await this.all()).find(
       (user) => user.email === email
     );
 
@@ -25,9 +25,14 @@ class UserUseCase implements IUserPrimaryPort {
     const user = await this.userRepository.createUser({ username, email });
     return user;
   }
-  async list(): Promise<User[]> {
-    const users = await this.userRepository.list();
+  async all(): Promise<User[]> {
+    const users = await this.userRepository.all();
     return users;
+  }
+
+  async findById(id: string): Promise<User> {
+    const user = await this.userRepository.findById(id);
+    return user;
   }
 }
 

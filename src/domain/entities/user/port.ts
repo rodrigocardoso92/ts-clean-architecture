@@ -6,13 +6,15 @@ interface IUserDTO {
 }
 
 interface IUserPrimaryPort {
-  list(): Promise<User[]>;
+  all(): Promise<User[]>;
   createUser({ username, email }: IUserDTO): Promise<User>;
+  findById(id: string): Promise<User>;
 }
 
 interface IUserSecondaryDatabasePort {
-  list(): Promise<User[]>;
+  all(): Promise<User[]>;
   createUser({ username, email }: IUserDTO): Promise<User>;
+  findById(id: string): Promise<User>;
 }
 
 export { IUserPrimaryPort, IUserSecondaryDatabasePort, IUserDTO };

@@ -28,13 +28,18 @@ class UserRepository implements IUserSecondaryDatabasePort {
     return user;
   }
 
-  async list(): Promise<User[]> {
+  async all(): Promise<User[]> {
     const users = await this.usersStorage;
     return users;
   }
 
   async findByEmail(email: string): Promise<User> {
     const user = await this.usersStorage.find((user) => user.email === email);
+    return user;
+  }
+
+  async findById(id: string): Promise<User> {
+    const user = await this.usersStorage.find((user) => user.id === id);
     return user;
   }
 }

@@ -11,11 +11,15 @@ const userUseCase = new UserUseCase(userRepository);
 const userRestController = new UserRestController(userUseCase);
 
 userRouter.get("/", (request, response) =>
-  userRestController.list(request, response)
+  userRestController.allUsers(request, response)
 );
 
 userRouter.post("/", (request, response) =>
   userRestController.createUser(request, response)
+);
+
+userRouter.get("/:id", (request, response) =>
+  userRestController.findUserById(request, response)
 );
 
 export { userRouter };
