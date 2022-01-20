@@ -1,8 +1,11 @@
+import { validate } from "uuid";
+
 import {
   IUserPrimaryPort,
   IUserSecondaryDatabasePort,
 } from "../../entities/user/port";
 import { User } from "../../entities/user/user";
+import { InvalidIdError } from "../../errors/sharedErrors";
 import { CreateUserError } from "../../errors/user/CreateUserError";
 
 interface IRequest {
@@ -31,6 +34,9 @@ class UserUseCase implements IUserPrimaryPort {
   }
 
   async findById(id: string): Promise<User> {
+    if (!validate(id)) {
+      throw new InvalidIdError();
+    }
     const user = await this.userRepository.findById(id);
     return user;
   }

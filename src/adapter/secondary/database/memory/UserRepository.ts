@@ -21,7 +21,12 @@ class UserRepository implements IUserSecondaryDatabasePort {
   }
 
   async createUser({ email, username }: IUserDTO): Promise<User> {
-    const user = new User({ email, username });
+    const user = new User();
+
+    Object.assign(user, {
+      email,
+      username,
+    });
 
     await this.usersStorage.push(user);
 
