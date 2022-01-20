@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
+
 import { UserPrimaryPort } from "../../../../domain/entities/user/port";
 
-class UserController {
+class UserRestController {
   constructor(private userService: UserPrimaryPort) {}
   async list(request: Request, response: Response): Promise<Response> {
     const users = await this.userService.list();
@@ -14,4 +15,4 @@ class UserController {
   }
 }
 
-export { UserController };
+export { UserRestController };
